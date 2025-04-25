@@ -6,7 +6,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeList implements Shape {
-    private static List<Shape> shapeList=new ArrayList<>();
+    private List<Shape> shapeList=new ArrayList<>();
+
+    private static ShapeList instance;
+
+    private ShapeList(){
+
+    }
+
+    public static ShapeList getInstance(){
+        if(instance==null){
+            instance=new ShapeList();
+        }
+        return instance;
+    }
 
     @Override
     public void showInfo() {
@@ -16,26 +29,35 @@ public class ShapeList implements Shape {
         }
     }
 
-    public static void addShape(Shape shape){
+    @Override
+    public String toSVGFormat() {
+        StringBuilder myStringBuilder=new StringBuilder();
+        for(Shape shape:shapeList){
+            myStringBuilder.append(shape.toSVGFormat());
+            myStringBuilder.append("\n");
+        }
+        return myStringBuilder.toString();
+    }
+
+    public void addShape(Shape shape) {
         shapeList.add(shape);
     }
 
-    public static Shape getShape(int index){
+    public int getSize() {
+        return shapeList.size();
+    }
+
+    public Shape getShape(int index) {
         return (index >= 0 && index < shapeList.size()) ? shapeList.get(index) : null;
     }
 
-    public static void removeShape(int index){
-        if(index>=0 && index<shapeList.size()){
+    public void removeShape(int index) {
+        if (index >= 0 && index < shapeList.size()) {
             shapeList.remove(index);
         }
     }
 
-    public static void clearShape(){
+    public void clearShape() {
         shapeList.clear();
     }
-
-    public static int getSize(){
-        return shapeList.size();
-    }
-
 }
