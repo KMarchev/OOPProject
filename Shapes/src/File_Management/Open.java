@@ -32,7 +32,7 @@ public class Open implements Executable {
 
                     if(shape!=null){
                         ShapeList.getInstance().addShape(shape);
-                        System.out.println("Shape read successfully! "+(++count)+" shapes read in total.\n");
+                        System.out.println("\nShape read successfully! "+(++count)+" shapes read in total.\n");
                     }
                 }
             }

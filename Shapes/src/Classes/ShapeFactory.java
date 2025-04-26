@@ -10,6 +10,8 @@ public class ShapeFactory {
 
     static {
         shapeMap.put("rect", Rectangle.class);
+        shapeMap.put("circle", Circle.class);
+        shapeMap.put("line", Line.class);
     }
 
     public static Shape createShape(String shapeName,String line){
