@@ -47,7 +47,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toSVGFormat() {
-        return String.format("<rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"%s\" />",this.x, this.y, this.width, this.height, this.fill);
+        return String.format("  <rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"%s\" />",this.x, this.y, this.width, this.height, this.fill);
     }
 
 

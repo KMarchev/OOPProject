@@ -7,6 +7,7 @@ import java.util.List;
 
 public class ShapeList implements Shape {
     private List<Shape> shapeList=new ArrayList<>();
+    private String fileName="";
 
     private static ShapeList instance;
 
@@ -60,4 +61,8 @@ public class ShapeList implements Shape {
     public void clearShape() {
         shapeList.clear();
     }
+
+    public void setFileName(String fileName){ this.fileName=fileName; }
+
+    public String getFileName(){ return fileName; }
 }

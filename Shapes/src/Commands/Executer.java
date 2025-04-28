@@ -13,6 +13,7 @@ public class Executer {
     static {
         executerMap.put("open", new Open());
         executerMap.put("print", new Print());
+        executerMap.put("saveas", new SaveAs());
     }
 
     public static Executable executable(String[] args) throws CommandException {

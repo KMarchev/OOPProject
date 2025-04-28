@@ -43,6 +43,6 @@ public class Line implements Shape {
 
     @Override
     public String toSVGFormat() {
-        return String.format("<line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"%s\" stroke-width=\"%d\" />",x1, y1, x2, y2, stroke, stroke_width);
+        return String.format("  <line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"%s\" stroke-width=\"%d\" />",x1, y1, x2, y2, stroke, stroke_width);
     }
 }

@@ -2,6 +2,7 @@ package Classes;
 
 import Commands.Executer;
 import Exceptions.CommandException;
+import Exceptions.FileException;
 import Interfaces.Executable;
 import Interfaces.Shape;
 
@@ -29,10 +30,12 @@ public class Application {
             try {
                 Executable cmd = Executer.executable(parts);
                 cmd.run(parts);
-            } catch (CommandException e) {
-                System.out.println("CommandException: "+e.getMessage());
-            }catch (Exception e) {
-                System.err.println("Error: " + e.getMessage());
+            } catch (CommandException c) {
+                System.err.println("CommandException: "+c.getMessage());
+            }catch (FileException f){
+                System.err.println("FileException: "+f.getMessage());
+            }catch (Exception e){
+                System.err.println("Unknown exception: "+e.getMessage());
             }
         }
 

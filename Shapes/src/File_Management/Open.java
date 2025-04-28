@@ -1,6 +1,8 @@
 package File_Management;
 
 import Classes.ShapeFactory;
+import Exceptions.CommandException;
+import Exceptions.FileException;
 import Interfaces.Executable;
 import Interfaces.Shape;
 
@@ -11,11 +13,16 @@ import java.util.Scanner;
 public class Open implements Executable {
 
     @Override
-    public void run(String[] args) {
+    public void run(String[] args) throws Exception {
+        if(args.length<2){
+            throw new CommandException("Not enough arguments to run this command");
+        }
         System.out.println("Reading from file: "+args[1]+".svg\n");
         try{
             File file=new File("File/"+args[1]+".svg");
             Scanner scanner=new Scanner(file);
+            ShapeList.getInstance().setFileName(args[1]);
+            ShapeList.getInstance().clearShape();
             int count=0;
             while(scanner.hasNextLine()){
                 String line=scanner.nextLine().trim();
