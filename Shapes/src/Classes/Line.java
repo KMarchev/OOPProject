@@ -17,6 +17,15 @@ public class Line implements Shape {
         stroke=getAttribute(line,"stroke");
     }
 
+    public Line(String[] params){
+        x1=Integer.parseInt(params[2]);
+        y1=Integer.parseInt(params[3]);
+        x2=Integer.parseInt(params[4]);
+        y2=Integer.parseInt(params[5]);
+        stroke_width=Integer.parseInt(params[6]);
+        stroke=params[7];
+    }
+
     private static String getAttribute(String line, String attribute){
         String pattern=attribute+"=\"([^\"]+)\"";
         Pattern p= Pattern.compile(pattern);

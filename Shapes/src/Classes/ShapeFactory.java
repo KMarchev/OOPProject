@@ -1,5 +1,6 @@
 package Classes;
 
+import Exceptions.CommandException;
 import Interfaces.Shape;
 
 import java.util.HashMap;
@@ -21,6 +22,21 @@ public class ShapeFactory {
                 return newShape.getDeclaredConstructor(String.class).newInstance(line);
             }catch (Exception e){
                 System.out.println(e.getMessage());
+            }
+        }
+        return null;
+    }
+
+    public static Shape createShape(String[] params) throws Exception{
+        Class<? extends Shape> newShape=shapeMap.get(params[1]);
+        if(newShape!=null){
+            try{
+                return newShape.getDeclaredConstructor(String[].class).newInstance((Object) params);
+            }catch(NoSuchMethodException e){
+                throw new NoSuchMethodException("Constructor not found for the shape: "+params[1]);
+            }
+            catch (Exception e){
+                throw new CommandException("Unknown error; " + e.getCause());
             }
         }
         return null;

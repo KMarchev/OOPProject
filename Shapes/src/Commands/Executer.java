@@ -14,6 +14,8 @@ public class Executer {
         executerMap.put("open", new Open());
         executerMap.put("print", new Print());
         executerMap.put("saveas", new SaveAs());
+        executerMap.put("save",new Save());
+        executerMap.put("create", new Create());
     }
 
     public static Executable executable(String[] args) throws CommandException {

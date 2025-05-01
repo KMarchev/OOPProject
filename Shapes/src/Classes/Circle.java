@@ -15,6 +15,13 @@ public class Circle implements Shape {
         fill=getAttribute(line, "fill");
     }
 
+    public Circle(String[] params){
+        cx=Integer.parseInt(params[2]);
+        cy=Integer.parseInt(params[3]);
+        r=Integer.parseInt(params[4]);
+        fill=params[5];
+    }
+
     private static String getAttribute(String line, String attribute){
         String pattern=attribute+"=\"([^\"]+)\"";
         Pattern p= Pattern.compile(pattern);
