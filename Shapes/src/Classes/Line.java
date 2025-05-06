@@ -54,4 +54,28 @@ public class Line implements Shape {
     public String toSVGFormat() {
         return String.format("  <line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"%s\" stroke-width=\"%d\" />",x1, y1, x2, y2, stroke, stroke_width);
     }
+
+    @Override
+    public void transate(int dx, int dy) {
+        setX1(Math.max(0,this.x1+dx));
+        setX2(Math.max(0,this.x2+dx));
+        setY1(Math.max(0,this.y1+dy));
+        setY2(Math.max(0,this.y2+dy));
+    }
+
+    public void setX1(int x1) {
+        this.x1 = x1;
+    }
+
+    public void setY1(int y1) {
+        this.y1 = y1;
+    }
+
+    public void setX2(int x2) {
+        this.x2 = x2;
+    }
+
+    public void setY2(int y2) {
+        this.y2 = y2;
+    }
 }

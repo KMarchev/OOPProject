@@ -49,6 +49,12 @@ public class Circle implements Shape {
         return String.format("  <circle cx=\"%d\" cy=\"%d\" r=\"%d\" fill=\"%s\" />", cx, cy, r, fill);
     }
 
+    @Override
+    public void transate(int dx, int dy) {
+        setCx(Math.max(r,this.cx+dx));
+        setCy(Math.max(r,this.cy+dy));
+    }
+
     public void setCx(int cx) {
         this.cx = cx;
     }

@@ -40,6 +40,13 @@ public class ShapeList implements Shape {
         return myStringBuilder.toString();
     }
 
+    @Override
+    public void transate(int dx, int dy) {
+        for(Shape shape:shapeList){
+            shape.transate(dx, dy);
+        }
+    }
+
     public void addShape(Shape shape) {
         shapeList.add(shape);
     }

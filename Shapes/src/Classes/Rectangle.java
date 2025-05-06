@@ -50,6 +50,12 @@ public class Rectangle implements Shape {
         return String.format("  <rect x=\"%d\" y=\"%d\" width=\"%d\" height=\"%d\" fill=\"%s\" />",this.x, this.y, this.width, this.height, this.fill);
     }
 
+    @Override
+    public void transate(int dx, int dy) {
+        setX(Math.max(0,this.x+dx));
+        setY(Math.max(0,this.y+dy));
+    }
+
 
     public void setX(int x) {
         this.x = x;
