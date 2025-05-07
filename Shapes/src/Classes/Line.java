@@ -56,11 +56,22 @@ public class Line implements Shape {
     }
 
     @Override
-    public void transate(int dx, int dy) {
+    public void translate(int dx, int dy) {
         setX1(Math.max(0,this.x1+dx));
         setX2(Math.max(0,this.x2+dx));
         setY1(Math.max(0,this.y1+dy));
         setY2(Math.max(0,this.y2+dy));
+    }
+
+    @Override
+    public boolean within(int x1, int y1, int x2, int y2) {
+        int lineMinX = Math.min(this.x1, this.x2) - stroke_width;
+        int lineMaxX = Math.max(this.x1, this.x2) + stroke_width;
+        int lineMinY = Math.min(this.y1, this.y2) - stroke_width;
+        int lineMaxY = Math.max(this.y1, this.y2) + stroke_width;
+
+        return lineMinX>=x1&&lineMaxX<=x2&&
+                lineMinY>=y1&&lineMaxY<=y2;
     }
 
     public void setX1(int x1) {

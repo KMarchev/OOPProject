@@ -51,9 +51,20 @@ public class Rectangle implements Shape {
     }
 
     @Override
-    public void transate(int dx, int dy) {
+    public void translate(int dx, int dy) {
         setX(Math.max(0,this.x+dx));
         setY(Math.max(0,this.y+dy));
+    }
+
+    @Override
+    public boolean within(int x1, int y1, int x2, int y2) {
+        int rectMinX=x;
+        int rectMaxX=x+width;
+        int rectMinY=y;
+        int rectMaxY=y+height;
+
+        return rectMinX>=x1&&rectMaxX<=x2&&
+                rectMinY>=y1&&rectMaxY<=y2;
     }
 
 

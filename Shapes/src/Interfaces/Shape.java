@@ -3,5 +3,6 @@ package Interfaces;
 public interface Shape {
     void showInfo();
     String toSVGFormat();
-    void transate(int dx, int dy);
+    void translate(int dx, int dy);
+    boolean within(int x1, int y1, int x2, int y2);
 }

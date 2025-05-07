@@ -41,10 +41,18 @@ public class ShapeList implements Shape {
     }
 
     @Override
-    public void transate(int dx, int dy) {
+    public void translate(int dx, int dy) {
         for(Shape shape:shapeList){
-            shape.transate(dx, dy);
+            shape.translate(dx, dy);
         }
+    }
+
+    @Override
+    public boolean within(int x1, int y1, int x2, int y2) {
+        for(Shape shape:shapeList){
+            if(!shape.within(x1,y1,x2,y2)) return false;
+        }
+        return true;
     }
 
     public void addShape(Shape shape) {
@@ -72,4 +80,8 @@ public class ShapeList implements Shape {
     public void setFileName(String fileName){ this.fileName=fileName; }
 
     public String getFileName(){ return fileName; }
+
+    public List<Shape> getShapeList(){
+        return shapeList;
+    }
 }

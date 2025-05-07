@@ -50,9 +50,15 @@ public class Circle implements Shape {
     }
 
     @Override
-    public void transate(int dx, int dy) {
+    public void translate(int dx, int dy) {
         setCx(Math.max(r,this.cx+dx));
         setCy(Math.max(r,this.cy+dy));
+    }
+
+    @Override
+    public boolean within(int x1, int y1, int x2, int y2) {
+        return cx - r >= x1 && cx + r <= x2
+                && cy - r >= y1 && cy + r <= y2;
     }
 
     public void setCx(int cx) {

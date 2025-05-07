@@ -41,4 +41,17 @@ public class ShapeFactory {
         }
         return null;
     }
+
+    public static Class<? extends Shape> getShapeType(String[] args) throws CommandException {
+        Class<? extends Shape> shapeClass = shapeMap.get(args[1]);
+        if (shapeClass == null) {
+            throw new CommandException("Invalid shape type: " + args[1]);
+        }
+        return shapeClass;
+    }
+
+    public static boolean checkMatchType(Shape shape, String[] args) throws CommandException {
+        Class<? extends Shape> expectedClass = getShapeType(args);
+        return expectedClass.isInstance(shape);
+    }
 }
