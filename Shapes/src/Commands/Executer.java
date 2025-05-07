@@ -20,6 +20,7 @@ public class Executer {
         executerMap.put("erase", new Erase());
         executerMap.put("translate", new Translate());
         executerMap.put("within", new Within());
+        executerMap.put("help", new Help());
     }
 
     public static Executable executable(String[] args) throws CommandException {
