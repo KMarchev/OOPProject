@@ -17,7 +17,7 @@ public class SaveAs implements Executable {
             throw new CommandException("Not enough arguments to run this command");
         }
 
-        File directory=new File("File");
+        File directory=new File("../files");
         if(!directory.exists()){
             throw new FileException("Directory doesn't exist");
         }

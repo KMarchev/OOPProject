@@ -1,7 +1,6 @@
-package Classes;
+package Shapes;
 
 import Interfaces.Shape;
-import org.w3c.dom.css.Rect;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

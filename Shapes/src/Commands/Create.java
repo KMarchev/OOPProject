@@ -1,6 +1,6 @@
 package Commands;
 
-import Classes.ShapeFactory;
+import Shapes.ShapeFactory;
 import Exceptions.CommandException;
 import File_Management.ShapeList;
 import Interfaces.Executable;

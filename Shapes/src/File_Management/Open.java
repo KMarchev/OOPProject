@@ -1,17 +1,14 @@
 package File_Management;
 
-import Classes.ShapeFactory;
+import Shapes.ShapeFactory;
 import Exceptions.CommandException;
-import Exceptions.FileException;
 import Interfaces.Executable;
 import Interfaces.Shape;
 
 import java.io.File;
-import java.util.List;
 import java.util.Scanner;
 
 public class Open implements Executable {
-
     @Override
     public void run(String[] args) throws Exception {
         if(args.length<2){
@@ -19,7 +16,7 @@ public class Open implements Executable {
         }
         System.out.println("Reading from file: "+args[1]+".svg\n");
         try{
-            File file=new File("File/"+args[1]+".svg");
+            File file=new File("../files/"+args[1]+".svg");
             Scanner scanner=new Scanner(file);
             ShapeList.getInstance().setFileName(args[1]);
             ShapeList.getInstance().clearShape();
