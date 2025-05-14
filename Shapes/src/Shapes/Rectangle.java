@@ -1,5 +1,6 @@
 package Shapes;
 
+import Helpers.AttributeGetter;
 import Interfaces.Shape;
 
 import java.util.regex.Matcher;
@@ -18,15 +19,15 @@ public class Rectangle implements Shape {
         this.y = Integer.parseInt(args[3]);
         this.width = Integer.parseInt(args[4]);
         this.height = Integer.parseInt(args[5]);
-        this.fill = args[6];
+        this.fill = AttributeGetter.getColour(args[6]);
     }
 
     public Rectangle(String line){
-        this.x=Integer.parseInt(getAttribute(line,"x"));
-        this.y=Integer.parseInt(getAttribute(line,"y"));
-        this.width=Integer.parseInt(getAttribute(line,"width"));
-        this.height=Integer.parseInt(getAttribute(line,"height"));
-        this.fill=getAttribute(line,"fill");
+        this.x=Integer.parseInt(AttributeGetter.getAttribute(line,"x"));
+        this.y=Integer.parseInt(AttributeGetter.getAttribute(line,"y"));
+        this.width=Integer.parseInt(AttributeGetter.getAttribute(line,"width"));
+        this.height=Integer.parseInt(AttributeGetter.getAttribute(line,"height"));
+        this.fill=AttributeGetter.getColour(AttributeGetter.getAttribute(line, "fill"));
     }
     @Override
     public void showInfo() {

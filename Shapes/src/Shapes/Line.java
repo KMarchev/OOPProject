@@ -1,5 +1,6 @@
 package Shapes;
 
+import Helpers.AttributeGetter;
 import Interfaces.Shape;
 
 import java.util.regex.Matcher;
@@ -9,12 +10,12 @@ public class Line implements Shape {
     private int x1,y1,x2,y2, stroke_width;
     private String stroke;
     public Line(String line){
-        x1=Integer.parseInt(getAttribute(line,"x1"));
-        y1=Integer.parseInt(getAttribute(line,"y1"));
-        x2=Integer.parseInt(getAttribute(line,"x2"));
-        y2=Integer.parseInt(getAttribute(line,"y2"));
-        stroke_width=Integer.parseInt(getAttribute(line,"stroke-width"));
-        stroke=getAttribute(line,"stroke");
+        x1=Integer.parseInt(AttributeGetter.getAttribute(line,"x1"));
+        y1=Integer.parseInt(AttributeGetter.getAttribute(line,"y1"));
+        x2=Integer.parseInt(AttributeGetter.getAttribute(line,"x2"));
+        y2=Integer.parseInt(AttributeGetter.getAttribute(line,"y2"));
+        stroke_width=Integer.parseInt(AttributeGetter.getAttribute(line,"stroke-width"));
+        stroke=AttributeGetter.getColour(getAttribute(line,"stroke"));
     }
 
     public Line(String[] params){
@@ -23,7 +24,7 @@ public class Line implements Shape {
         x2=Integer.parseInt(params[4]);
         y2=Integer.parseInt(params[5]);
         stroke_width=Integer.parseInt(params[6]);
-        stroke=params[7];
+        stroke=AttributeGetter.getColour(params[7]);
     }
 
     private static String getAttribute(String line, String attribute){

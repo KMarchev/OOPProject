@@ -1,5 +1,6 @@
 package Shapes;
 
+import Helpers.AttributeGetter;
 import Interfaces.Shape;
 
 import java.util.regex.Matcher;
@@ -9,17 +10,17 @@ public class Circle implements Shape {
     private int cx, cy, r;
     private String fill;
     public Circle(String line){
-        cx=Integer.parseInt(getAttribute(line, "cx"));
-        cy=Integer.parseInt(getAttribute(line, "cy"));
-        r=Integer.parseInt(getAttribute(line, "r"));
-        fill=getAttribute(line, "fill");
+        cx=Integer.parseInt(AttributeGetter.getAttribute(line, "cx"));
+        cy=Integer.parseInt(AttributeGetter.getAttribute(line, "cy"));
+        r=Integer.parseInt(AttributeGetter.getAttribute(line, "r"));
+        fill=AttributeGetter.getColour(AttributeGetter.getAttribute(line,"fill"));
     }
 
     public Circle(String[] params){
         cx=Integer.parseInt(params[2]);
         cy=Integer.parseInt(params[3]);
         r=Integer.parseInt(params[4]);
-        fill=params[5];
+        fill=AttributeGetter.getColour(params[5]);
     }
 
     private static String getAttribute(String line, String attribute){

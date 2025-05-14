@@ -1,17 +1,13 @@
-package Classes;
+package Commands;
 
-import Commands.Executer;
 import Exceptions.CommandException;
 import Exceptions.FileException;
 import Interfaces.Executable;
-import Interfaces.Shape;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
-public class Application {
-    public static void main(String[] args) {
+public class Program {
+    public static void run(){
         Scanner console = new Scanner(System.in);
         System.out.println("SVG Editor (type 'help' for commands, 'exit' to quit)");
 
