@@ -1,7 +1,7 @@
 package Enumerators;
 
 public enum Colours {
-    blue,
-    red,
-    green
+    BLUE,
+    RED,
+    GREEN
 }

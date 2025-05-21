@@ -11,9 +11,9 @@ public class AttributeGetter {
     private static final Map<String, Colours> coloursMap=new HashMap<>();
 
     static {
-        coloursMap.put("red", Colours.red);
-        coloursMap.put("blue", Colours.blue);
-        coloursMap.put("green", Colours.green);
+        coloursMap.put("red", Colours.RED);
+        coloursMap.put("blue", Colours.BLUE);
+        coloursMap.put("green", Colours.GREEN);
     }
 
     public static String getAttribute(String line, String attribute){
@@ -28,6 +28,6 @@ public class AttributeGetter {
     }
 
     public static String getColour(String colour){
-        return coloursMap.getOrDefault(colour, Colours.red).toString();
+        return coloursMap.getOrDefault(colour, Colours.RED).toString().toLowerCase();
     }
 }
