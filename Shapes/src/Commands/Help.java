@@ -2,7 +2,17 @@ package Commands;
 
 import Interfaces.Executable;
 
+/**
+ * Command to display a list of all available commands and their usage.
+ */
 public class Help implements Executable {
+
+    /**
+     * Executes the help command by printing command descriptions to the console.
+     *
+     * @param args command arguments (ignored).
+     * @throws Exception never thrown in current implementation.
+     */
     @Override
     public void run(String[] args) throws Exception {
         System.out.print("""

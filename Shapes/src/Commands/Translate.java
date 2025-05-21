@@ -4,7 +4,21 @@ import Exceptions.CommandException;
 import File_Management.ShapeList;
 import Interfaces.Executable;
 
+/**
+ * Command to translate shapes by given x and y offsets.
+ * Can translate all shapes or a specific shape by index.
+ */
 public class Translate implements Executable {
+
+    /**
+     * Executes the translate command.
+     *
+     * @param args command arguments; expects either:
+     *             - 3 arguments: ["translate", "&lt;x&gt;", "&lt;y&gt;"] to translate all shapes
+     *             - 4 arguments: ["translate", "&lt;index&gt;", "&lt;x&gt;", "&lt;y&gt;"] to translate a specific shape
+     * @throws CommandException if argument count is incorrect, parameters are invalid, or shape index not found.
+     * @throws Exception for other execution errors.
+     */
     @Override
     public void run(String[] args) throws Exception {
         if(args.length!=3&&args.length!=4)

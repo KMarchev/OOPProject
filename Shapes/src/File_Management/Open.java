@@ -8,7 +8,19 @@ import Interfaces.Shape;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * Command to open and read shapes from an SVG file.
+ */
 public class Open implements Executable {
+
+    /**
+     * Executes the open command to load shapes from an SVG file.
+     *
+     * @param args command arguments; expects:
+     *             - 2 arguments: ["open", "&lt;file_name&gt;"]
+     * @throws CommandException if not enough arguments are provided.
+     * @throws Exception for file reading or shape parsing errors.
+     */
     @Override
     public void run(String[] args) throws Exception {
         if(args.length<2){

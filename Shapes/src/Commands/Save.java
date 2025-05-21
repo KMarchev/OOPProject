@@ -5,7 +5,20 @@ import File_Management.FileSaver;
 import File_Management.ShapeList;
 import Interfaces.Executable;
 
+
+/**
+ * Command to save the current shapes to the opened file.
+ */
 public class Save implements Executable {
+
+
+    /**
+     * Executes the save command.
+     *
+     * @param args command arguments (ignored).
+     * @throws CommandException if no file is currently opened.
+     * @throws Exception for other errors during file saving.
+     */
     @Override
     public void run(String[] args) throws Exception {
         if(ShapeList.getInstance().getFileName().isEmpty()){

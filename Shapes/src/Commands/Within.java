@@ -6,7 +6,21 @@ import File_Management.ShapeList;
 import Interfaces.Executable;
 import Interfaces.Shape;
 
+/**
+ * Command to list shapes within a specified rectangular area.
+ * Can filter by shape type optionally.
+ */
 public class Within implements Executable {
+
+    /**
+     * Executes the within command.
+     *
+     * @param args command arguments; expects either:
+     *             - 5 arguments: ["within", "&lt;x1&gt;", "&lt;y1&gt;", "&lt;x2&gt;", "&lt;y2&gt;"]
+     *             - 6 arguments: ["within", "&lt;shapeType&gt;", "&lt;x1&gt;", "&lt;y1&gt;", "&lt;x2&gt;", "&lt;y2&gt;"]
+     * @throws CommandException if argument count is invalid or coordinates are not integers.
+     * @throws Exception for other execution errors.
+     */
     @Override
     public void run(String[] args) throws Exception {
         if (args.length != 5 && args.length != 6) {

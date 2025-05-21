@@ -3,21 +3,32 @@ package Shapes;
 import Helpers.AttributeGetter;
 import Interfaces.Shape;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+/**
+ * Represents a line shape with start and end coordinates, stroke color, and stroke width.
+ */
 public class Line implements Shape {
     private int x1,y1,x2,y2, stroke_width;
     private String stroke;
+
+    /**
+     * Constructs a Line from an SVG element string.
+     *
+     * @param line the SVG line representing the line
+     */
     public Line(String line){
         x1=Integer.parseInt(AttributeGetter.getAttribute(line,"x1"));
         y1=Integer.parseInt(AttributeGetter.getAttribute(line,"y1"));
         x2=Integer.parseInt(AttributeGetter.getAttribute(line,"x2"));
         y2=Integer.parseInt(AttributeGetter.getAttribute(line,"y2"));
         stroke_width=Integer.parseInt(AttributeGetter.getAttribute(line,"stroke-width"));
-        stroke=AttributeGetter.getColour(getAttribute(line,"stroke"));
+        stroke=AttributeGetter.getColour(AttributeGetter.getAttribute(line,"stroke"));
     }
 
+    /**
+     * Constructs a Line from command arguments.
+     *
+     * @param params the array of parameters: [create, line, x1, y1, x2, y2, stroke-width, stroke]
+     */
     public Line(String[] params){
         x1=Integer.parseInt(params[2]);
         y1=Integer.parseInt(params[3]);
@@ -27,17 +38,10 @@ public class Line implements Shape {
         stroke=AttributeGetter.getColour(params[7]);
     }
 
-    private static String getAttribute(String line, String attribute){
-        String pattern=attribute+"=\"([^\"]+)\"";
-        Pattern p= Pattern.compile(pattern);
-        Matcher m=p.matcher(line);
-        if(m.find()){
-            return m.group(1);
-        }else{
-            throw new IllegalArgumentException("Invalid argument!");
-        }
-    }
 
+    /**
+     * Prints detailed information about this line to the console.
+     */
     @Override
     public void showInfo() {
         System.out.printf("""
@@ -51,11 +55,23 @@ public class Line implements Shape {
                 """,x1, y1, x2, y2, stroke, stroke_width);
     }
 
+    /**
+     * Returns the SVG representation of this line as a string.
+     *
+     * @return the SVG format string of this line
+     */
     @Override
     public String toSVGFormat() {
         return String.format("  <line x1=\"%d\" y1=\"%d\" x2=\"%d\" y2=\"%d\" stroke=\"%s\" stroke-width=\"%d\" />",x1, y1, x2, y2, stroke, stroke_width);
     }
 
+    /**
+     * Translates the line's start and end points by the given deltas.
+     * Coordinates are not allowed to go below zero.
+     *
+     * @param dx the delta to translate on the x-axis
+     * @param dy the delta to translate on the y-axis
+     */
     @Override
     public void translate(int dx, int dy) {
         setX1(Math.max(0,this.x1+dx));
@@ -64,6 +80,16 @@ public class Line implements Shape {
         setY2(Math.max(0,this.y2+dy));
     }
 
+    /**
+     * Determines if the line lies completely within the rectangular area
+     * defined by (x1, y1) and (x2, y2), considering the stroke width.
+     *
+     * @param x1 the minimum x-coordinate of the area
+     * @param y1 the minimum y-coordinate of the area
+     * @param x2 the maximum x-coordinate of the area
+     * @param y2 the maximum y-coordinate of the area
+     * @return true if the line is completely within the area, false otherwise
+     */
     @Override
     public boolean within(int x1, int y1, int x2, int y2) {
         int lineMinX = Math.min(this.x1, this.x2) - stroke_width;
