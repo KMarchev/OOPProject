@@ -11,13 +11,6 @@ import java.util.regex.Pattern;
  * Utility class for extracting attribute values and mapping color strings.
  */
 public class AttributeGetter {
-    private static final Map<String, Colours> coloursMap=new HashMap<>();
-
-    static {
-        coloursMap.put("red", Colours.RED);
-        coloursMap.put("blue", Colours.BLUE);
-        coloursMap.put("green", Colours.GREEN);
-    }
 
     /**
      * Extracts the value of a specified attribute from a line of text.
@@ -46,6 +39,10 @@ public class AttributeGetter {
      * @return the lowercase string representation of the color enum
      */
     public static String getColour(String colour){
-        return coloursMap.getOrDefault(colour, Colours.RED).toString().toLowerCase();
+        try{
+            return Colours.valueOf(colour.toUpperCase()).name().toLowerCase();
+        }catch (IllegalArgumentException ie){
+            return Colours.RED.name().toLowerCase();
+        }
     }
 }
